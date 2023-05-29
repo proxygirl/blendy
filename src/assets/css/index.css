@@ -1,0 +1,176 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+@font-face {
+    font-family: 'Patua';
+    src: url('../fonts/PatuaOne-Regular.ttf');
+}
+
+:root {
+    --neutral: #494854;
+    --success: #ffb500;
+    display: flex;
+    height: 100vh;
+}
+
+.light {
+    --background: white;
+}
+
+.dark {
+    --background: black; 
+    --neutral: #e8e8e8;
+}
+
+body:has(.dark) {
+    background: linear-gradient(315deg, rgba(0,0,0,1) 0%, rgba(25,31,43,1) 100%);;
+}
+
+body {
+    background: var(--background);
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    max-width: 425px;    
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;   
+    padding: 0.25em;
+    flex: 1;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: var(--neutral);
+    font-family: 'Patua';
+    font-size: x-large;
+    padding-block: 0.5em;
+}
+
+.controls > :nth-child(1) {
+    justify-self: start;
+}
+
+.controls > :nth-child(2) {
+    justify-self: center;
+}
+
+.controls > :nth-child(3)  {
+    display: flex;
+    gap: 1em;
+    justify-self: end;
+    
+}
+
+.score {
+    display: flex;
+    gap: 5px;
+}
+
+.score i {
+    color: var(--success);
+}
+
+.game.complete .complete {
+    color: var(--success);
+    scale: 1.5;
+    animation: complete 0.4s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes complete {
+    0% {scale: 1}
+    50% {scale: 1.7}
+    100% {scale: 1.5}
+}
+
+.invert .puzzle .tile:not(.empty) {
+    filter: invert(1);
+}
+
+.puzzle {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+/*    overflow-y: scroll;*/
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */    
+}
+
+.puzzle::-webkit-scrollbar {
+    display: none;
+}
+
+.puzzle > * {
+    display: grid;
+}
+
+.game.complete .tray {
+    animation: close 0.4s;
+    animation-timing-function: ease;
+    height: 0px;
+    overflow: hidden;
+}
+
+@keyframes close {
+    0% {height: var(--height)}
+    100% {height: 0px}
+}
+
+.tray .tile.empty {
+    scale: 0.25;
+}
+
+.board .tile.empty {
+    scale: 0.75;
+}
+
+.slot {
+    aspect-ratio: 1/1;
+}
+
+.tile {
+    box-sizing: border-box;
+    border-radius: 15%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.tile.selected {
+/*    box-shadow: 0px 0px 10px 0px #0000008a;*/
+    scale: 1.125;
+}
+
+/*
+.game:not(.complete) .tile.locked::after {
+    font-family: bootstrap-icons;
+    content: '\F633';
+    padding: 5px;
+    font-size: 1.2em;
+    filter: invert(1);
+    opacity: 0.6;
+    color: #ffffff; 
+}
+*/
+
+.tile.empty {
+    opacity: 0.5;
+    border: 3px solid var(--neutral);
+}
+
+.tray .tile.empty {
+    background: var(--neutral);
+}
