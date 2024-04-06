@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useResizeDetector } from 'react-resize-detector'
+import { useState, useEffect } from 'react'
 
-import Header from './Header'
-import Footer from './Footer'
-import Puzzle from './Puzzle'
+import Header from '../components/Header'
+import Puzzle from '../components/Puzzle'
+import Footer from '../components/Footer'
 
-import Level from '../generation/Level'
+import Level from '../modules/Level'
 
-const Game = () => {
-    
-    const { width, height, ref } = useResizeDetector();
+export default function Game(props) {
     
     // Game Variables
     
@@ -24,10 +21,22 @@ const Game = () => {
         false
     )  
     
-    const [score, setScore] = useState(
-        localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0
-    )     
-    
+    const [achievements, setAchievements] = useState(
+        localStorage.getItem('achievements') ? JSON.parse(localStorage.getItem('achievements')) : {
+            'solved': 0,
+            'skipped': 0,
+            'puzzles': {
+                'line': {'label': 'Line', 'count': 0},
+                'square': {'label': 'Square', 'count': 0},
+                'branches': {'label': 'Branches', 'count': 0},
+                'pyramid': {'label': 'Pyramid', 'count': 0},
+                'rectangle': {'label': 'Rectangle', 'count': 0},
+                'dualPyramid': {'label': 'Dual Pyramid', 'count': 0},
+                'rectanglePyramid': {'label': 'Rectangle Pyramid', 'count': 0}
+            },
+        }
+    ) 
+
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
     )
@@ -36,21 +45,23 @@ const Game = () => {
     const [accessible, setAccessible] = useState(false)    
 
     // Save
-    React.useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('level',
             JSON.stringify(level)
         )
-    }, [level])   
+    }, [level]) 
     
-    React.useEffect(() => {
+    useEffect(() => {
+        localStorage.setItem('achievements',
+            JSON.stringify(achievements)
+        )    
+    }, [achievements])      
+    
+    useEffect(() => {
         localStorage.setItem('isComplete', isComplete)
     }, [isComplete])
 
-    React.useEffect(() => {
-        localStorage.setItem('score', score)
-    }, [score])
-    
-    React.useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('theme', theme)
     }, [theme])          
     
@@ -61,14 +72,27 @@ const Game = () => {
                 break
             case 'accessible': setAccessible(accessible ? false : true)
                 break
+            case 'back': props.viewHandler('Home')
+                break
             default:
                 break
         }
     }
 
     const handleNextLevel = () => {
+        console.log('Next Level')
+        console.log(isComplete)
         setLevel(new Level())
         setSelected(null)
+
+        const temp = {...achievements}
+        temp['puzzles'][level.type]['count'] = isComplete ? temp['puzzles'][level.type]['count'] + 1 : temp['puzzles'][level.type]['count']
+        temp['solved'] =  isComplete ? achievements.solved + 1 : achievements.solved
+        temp['skipped'] = !isComplete ? achievements.skipped + 1 : achievements.skipped
+
+        setAchievements(temp)
+
+        console.log(level.type)
         setisComplete(false)
     }
     
@@ -108,7 +132,6 @@ const Game = () => {
                     puzzle: puzzle
                 }))
                 
-                setScore(isWon ? score + 1 : score)
                 setisComplete(isWon)
                 setSelected(null)
                 
@@ -119,18 +142,18 @@ const Game = () => {
     }
     
     const classes = [
-        'game',
+        'game play',
         theme,
         `${accessible ? 'invert' : ''}`,
         `${isComplete ? 'complete' : ''}`
     ]
-    
+        
+
     return(
-        <div ref={ref} className={classes.join(' ')} >
+        <div className={classes.join(' ')} >
             <Header
-                score={score}
                 isComplete={isComplete}
-                onClick={handleNextLevel}
+                next={handleNextLevel}
                 reset={handleResetLevel}
             ></Header>
             <Puzzle 
@@ -138,7 +161,6 @@ const Game = () => {
                 selected={selected}
                 isComplete={isComplete}
                 onClick={handleAction}
-                ratio = { (height-150)/width }
             ></Puzzle>
             <Footer
                 theme={theme}
@@ -148,5 +170,3 @@ const Game = () => {
         </div>
     )
 }
-
-export default Game

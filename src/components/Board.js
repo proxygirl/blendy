@@ -1,6 +1,6 @@
 import { useResizeDetector } from 'react-resize-detector'
 
-const Board = (props) => { 
+export default function Board(props) { 
 
     const { width, height, ref } = useResizeDetector({
         handleHeight: (!props.isComplete && props.name === 'tray'),
@@ -12,7 +12,7 @@ const Board = (props) => {
             ref = {(props.name === 'tray') ? ref : null}
             className = {props.name}
             style = {{
-                gridTemplateColumns: `repeat(${props.width}, 1fr)`,
+                gridTemplateColumns: `repeat(${props.trayWidth}, 1fr)`,
                 display: `${(props.debugging && props.name === 'tray') ? 'none' : ''}`,
                 "--height": props.name === 'tray' ? `${height}px` : ''
                 
@@ -22,5 +22,3 @@ const Board = (props) => {
         </div>
     )
 }
-
-export default Board

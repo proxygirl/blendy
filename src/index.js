@@ -1,9 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Game from './blendy/components/Game'
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./assets/css/style.css";
 
-import './assets/css/index.css'
+import App from "./App";
 
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<Game/>)
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

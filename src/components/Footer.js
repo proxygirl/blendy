@@ -1,4 +1,4 @@
-const Footer = (props) => {
+export default function Footer(props) {
     
     return(
         <footer className='controls'>
@@ -6,12 +6,10 @@ const Footer = (props) => {
                 className={`bi ${props.theme === 'light' ? 'bi-moon-fill' : 'bi-sun-fill' }`} 
                 onClick = {() => props.onClick('theme')}
             ></i>                
-            <span>blendy</span>
+            <span onClick = {() => props.onClick('back')}>blendy</span>
             <i 
                 className={`bi ${props.accessible ? 'bi-toggle-on' : 'bi-toggle-off' }`}
                 onClick = {() => props.onClick('accessible')}></i>
         </footer>
     )
 }
-
-export default Footer
