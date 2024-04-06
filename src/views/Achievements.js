@@ -4,7 +4,7 @@ export default function Achievements(props) {
 
     const [achievements, setAchievements] = useState(
         localStorage.getItem('achievements') ? JSON.parse(localStorage.getItem('achievements')) : null
-    )  
+    )
     
     return (
         <div className="game dark achievements">
