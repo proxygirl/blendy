@@ -186,7 +186,20 @@ const Game = () => {
     )
     } else {
       return(
-       <>test</>
+       <Container>
+            <Header
+                solved={level.solved}
+                next={handleNextLevel}
+                reset={handleResetLevel}
+            ></Header>
+            <div></div>     
+            <Footer
+                theme={theme}
+                accessible={accessible}
+                onClick={handleControls}
+                difficulty = {level.difficulty}
+            ></Footer>        
+       </Container>
     )  
     }
 
