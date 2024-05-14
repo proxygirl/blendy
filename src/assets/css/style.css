@@ -72,6 +72,12 @@ body > div {
   max-width: 425px;    
 }
 
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .wrapper {
   flex: 1;
   display: flex;
