@@ -9,7 +9,7 @@
       "lockedFrequency": ""
     },        
     "function": {
-      "path": "makeLine.js",
+      "path": "makeLine",
       "args": [
         {
           "name": "length",
@@ -29,7 +29,7 @@
       "lockedFrequency": "6"
     },        
     "function": {
-      "path": "makeLadder.js",
+      "path": "makeLadder",
       "args": [
         {
           "name": "height",
@@ -54,7 +54,7 @@
       "lockedFrequency": 6
     },
     "function": {
-      "path": "makeBranches.js",
+      "path": "makeBranches",
       "args": [
         {
           "name": "count",
@@ -84,7 +84,7 @@
       "lockedFrequency": 6
     },        
     "function": {
-      "path": "makePyramid.js",
+      "path": "makePyramid",
       "args": [
         {
           "name": "layers",
@@ -104,7 +104,7 @@
       "lockedFrequency": 6
     },
     "function": {
-      "path": "makeRectangle.js",
+      "path": "makeRectangle",
       "args": [       
         {
           "name": "width",
@@ -129,7 +129,7 @@
       "lockedFrequency": 10
     },        
     "function": {
-      "path": "makeDualPyramid.js",      
+      "path": "makeDualPyramid",      
       "args": [      
       ]
     }
@@ -144,7 +144,7 @@
       "lockedFrequency": 10
     },        
     "function": {
-      "path": "makeRectanglePyramid.js",
+      "path": "makeRectanglePyramid",
       "args": [       
       ]
     }

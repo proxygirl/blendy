@@ -75,7 +75,7 @@ const makeLevel = async (options) => {
   const modifiers = difficulty.shapeModifiers[shape.name]
 
   // await the shape's generate function
-  const { default: makeShape } = await import(`./shapes/${shape.function.path}`)
+  const { default: makeShape } = await import(`./shapes/${shape.function.path}.js`)
 
   // build required arguments for generate function
   const args = buildArguments(shape.function.args, modifiers)
