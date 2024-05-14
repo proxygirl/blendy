@@ -1,0 +1,55 @@
+{
+  "title": "Level",
+  "description": "A blendy level",
+  "type": "object",
+  "properties": {
+    "debug": {
+      "type": "boolean"
+    },
+    "validated": {
+      "type": "boolean"
+    },         
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "difficulty": {
+      "type": "string"
+    },
+    "solved": {
+      "type": "boolean"
+    },
+    "solution": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "puzzle": {
+      "type": "object",
+      "properties": {
+        "tray": {
+          "type": "object"
+        },
+        "board": {
+          "type": "object"
+        }             
+      }
+    },
+    "reset": {
+      "type": "object",
+      "properties": {
+        "tray": {
+          "type": "object"
+        },
+        "board": {
+          "type": "object"
+        }             
+      }
+    }                         
+  },
+  "required": ["validated", "debug", "id", "type", "difficulty", "solved", "solution", "puzzle", "reset"],
+  "additionalProperties": false  
+}

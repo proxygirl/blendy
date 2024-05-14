@@ -1,0 +1,92 @@
+{
+  "easy": {
+      "label": "Easy",
+      "shapes": ["line", "branches", "pyramid", "ladder"],
+      "weights": [0.75, 0.7, 0.125, 0.25],
+      "colorDifference": 0.35,
+      "shapeModifiers": {
+        "branches": {
+          "count": {
+            "min": "-1",
+            "max": "-2"
+          },
+          "max": "-1"
+        },
+        "ladder": {
+          "height": {
+            "min": "1",
+            "max": "-2"
+          },
+          "width": {
+            "max": "-4"
+          }
+        }        
+      }
+  },
+  "medium": {
+    "label": "Medium",
+    "shapes": ["branches", "rectangle", "pyramid", "ladder"],
+    "weights": [0.33, 0.33, 0.33,0.33],
+    "colorDifference": 0.3,
+    "shapeModifiers": {
+      "branches": {
+        "count": {
+          "min": "0",
+          "max": "-1"
+        },
+        "max": "-1"
+      },
+      "rectangle": {
+        "width": {
+          "max": "-1"
+        },
+        "height": {
+          "max": "-1"
+        }       
+      },
+      "pyramid": {
+        "layers": "1"
+      },
+      "ladder": {
+        "height": {
+          "min": "2",
+          "max": "-2"
+        },
+        "width": {
+          "min": "2",
+          "max": "-2"
+        }  
+      }       
+    }
+  },
+  "hard": {
+    "label": "Hard",
+    "shapes": ["pyramid", "dualPyramid", "rectanglePyramid", "branches"],
+    "weights": [1,1,1, 1],
+    "colorDifference": 0.3,
+    "shapeModifiers": {
+      "branches": {
+        "count": {
+          "min": "1"
+        },
+        "min": "1"
+      },      
+      "pyramid": {
+        "lockedFrequency": "6",
+        "layers": "2"
+      }        
+    }
+  },
+  "bonus": {
+    "label": "Bonus",
+    "shapes": ["pyramid"],
+    "weights": [1],
+    "colorDifference": 0.3,
+    "shapeModifiers": {
+      "pyramid": {
+        "lockedFrequency": "49",
+        "layers": "4"
+      }    
+    }
+  }                       
+}

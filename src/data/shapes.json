@@ -1,0 +1,152 @@
+[
+  {
+    "name": "line",
+    "label": {
+        "singular": "Line",
+        "plural": "Lines"
+    },
+    "options": {
+      "lockedFrequency": ""
+    },        
+    "function": {
+      "path": "makeLine.js",
+      "args": [
+        {
+          "name": "length",
+          "type": "range",
+          "range": {"min": 5, "max": 7}
+        }
+      ]
+    }
+  },
+  {
+    "name": "ladder",
+    "label": {
+        "singular": "Ladder",
+        "plural": "Ladders"
+    },
+    "options": {
+      "lockedFrequency": "6"
+    },        
+    "function": {
+      "path": "makeLadder.js",
+      "args": [
+        {
+          "name": "height",
+          "type": "range",
+          "range": {"min": 3, "max": 7}
+        },
+        {
+          "name": "width",
+          "type": "range",
+          "range": {"min": 1, "max": 5}
+        }
+      ]
+    }
+  },  
+  {
+    "name": "branches",
+    "label": {
+        "singular": "Branches",
+        "plural": "Branches"
+    },
+    "options": {
+      "lockedFrequency": 6
+    },
+    "function": {
+      "path": "makeBranches.js",
+      "args": [
+        {
+          "name": "count",
+          "type": "range",
+          "range": {"min": 3, "max": 4}
+        },        
+        {
+          "name": "min",
+          "type": "value",
+          "value": 4
+        },
+        {
+          "name": "max",
+          "type": "value",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "name": "pyramid",
+    "label": {
+        "singular": "Pyramid",
+        "plural": "Pyramids"
+    },
+    "options": {
+      "lockedFrequency": 6
+    },        
+    "function": {
+      "path": "makePyramid.js",
+      "args": [
+        {
+          "name": "layers",
+          "type": "value",
+          "value": 3
+        }          
+      ]
+    }
+  },        
+  {
+    "name": "rectangle",
+    "label": {
+        "singular": "Rectangle",
+        "plural": "Rectangles"
+    },
+    "options": {
+      "lockedFrequency": 6
+    },
+    "function": {
+      "path": "makeRectangle.js",
+      "args": [       
+        {
+          "name": "width",
+          "type": "range",
+          "range": {"min": 4, "max": 6}
+        },
+        {
+          "name": "height",
+          "type": "range",
+          "range": {"min": 4, "max": 6}
+        }             
+      ]
+    }
+  },
+  {
+    "name": "dualPyramid",
+    "label": {
+        "singular": "Dual Pyramid",
+        "plural": "Dual Pyramids"
+    },
+    "options": {
+      "lockedFrequency": 10
+    },        
+    "function": {
+      "path": "makeDualPyramid.js",      
+      "args": [      
+      ]
+    }
+  },
+  {
+    "name": "rectanglePyramid",
+    "label": {
+        "singular": "Rectangle Pyramid",
+        "plural": "Rectangle Pyramids"
+    },
+    "options": {
+      "lockedFrequency": 10
+    },        
+    "function": {
+      "path": "makeRectanglePyramid.js",
+      "args": [       
+      ]
+    }
+  }                         
+ ]

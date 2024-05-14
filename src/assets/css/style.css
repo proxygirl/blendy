@@ -2,18 +2,20 @@
 
 @font-face {
     font-family: 'Kayak';
-    src: url('../fonts/Kayak\ Sans\ Regular.otf');
+    src: url('../fonts/Kayak_Sans_Regular.otf');
 }
 
 @font-face {
     font-family: 'Kayak Bold';
-    src: url('../fonts/Kayak\ Sans\ Bold.otf');
+    src: url('../fonts/Kayak_Sans_Bold.otf');
 }
 
 :root {
-    --neutral: beige;
-    --success: beige;
-    --background: linear-gradient(315deg, rgba(0,0,0,1) 0%, rgba(25,31,43,1) 100%);
+    --light: beige;
+    --dark: #20201d;
+    --neutral: var(--light);
+    --background: var(--dark);
+
     display: flex;
     height: 100vh;
 }
@@ -25,6 +27,7 @@ body {
     background: var(--background);
     color: var(--neutral);
     font-size: x-large;
+      user-select: none; /* Standard syntax */
 }
 
 body:has(.dark) {
@@ -39,13 +42,64 @@ body:has(.light) {
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
-.home, .achievements {
-    justify-content: space-between;
-    align-items: start;
-    gap: 3rem;
+h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--neutral);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: unset;
+  margin: unset;
+}
+
+body > div {
+  flex: 1;
+  display: flex;
+  max-width: 425px;    
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25em;
+  font-family: 'Kayak';
+}
+
+.about main,
+.achievements main,
+.error main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.achievements-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .play {
@@ -53,29 +107,85 @@ h1 {
 }
 
 .menu {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
-.menu-item a {
-    color: var(--neutral)
+.menu-item.disabled {
+  opacity: 0.3
 }
 
-.container {
-    flex: 1;
-    display: flex;
-    max-width: 425px;    
+.menu-item > *{
+  background-color: #6E6E6E;
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.game {
-    font-family: 'Kayak';
-    display: flex;
-    flex-direction: column;
-    /* gap: 1em;    */
-    padding: 0.25em;
-    flex: 1;
+.menu-difficulty {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.menu-difficulty .menu-item > * {
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  border: none;
+}
+
+.menu-easy > * {
+  background-color: #9C9C9C;
+}
+
+.menu-medium > *  {
+  background-color: #6E6E6E;
+}
+
+.menu-hard > *  {
+  background-color: #434343;
+}
+
+.menu-bonus > *  {
+  background-color: #252525;
+}
+
+.menu-auxiliary {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.achievements-display {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 2rem;
+}
+
+.menu-achievements {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.achievements-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menu-achievements li {
+  opacity: 0.5;
+}
+
+.menu-achievements li.active {
+  opacity: 1;
+  border-bottom: 2px solid;
+  padding-bottom: 0.75rem;
 }
 
 .controls {
@@ -99,15 +209,6 @@ h1 {
     gap: 1em;
     justify-self: end;
     
-}
-
-.score {
-    display: flex;
-    gap: 5px;
-}
-
-.score i {
-    color: var(--success);
 }
 
 .game.complete .complete {
@@ -184,14 +285,17 @@ h1 {
     scale: 1.125;
 }
 
+.tile.locked {
+  --locked-color: white;
+}
+
 .game:not(.complete) .tile.locked::after {
     font-family: bootstrap-icons;
     content: '\F633';
-    padding: 5px;
-    font-size: 1.2em;
-    filter: invert(1);
-    opacity: 0.6;
-    color: #ffffff; 
+    padding: 10%;
+    font-size: 1.2rem;
+    opacity: 0.75;
+    color: var(--locked-color); 
 }
 
 .tile.empty {

@@ -1,0 +1,56 @@
+{
+  "title": "Achievements",
+  "type": "object",
+  "properties": {
+    "easy": {
+      "type": "object",
+      "properties": {
+        "skipped": {
+          "type": "integer"
+        },
+        "completed": {
+          "type": "object"
+        }
+      },
+      "required": ["skipped", "completed"]      
+    },    
+    "medium": {
+      "type": "object",
+      "properties": {
+        "skipped": {
+          "type": "integer"
+        },
+        "completed": {
+          "type": "object"
+        }
+      },
+      "required": ["skipped", "completed"]         
+    },
+    "hard": {
+      "type": "object",
+      "properties": {
+        "skipped": {
+          "type": "integer"
+        },
+        "completed": {
+          "type": "object"
+        }
+      },
+      "required": ["skipped", "completed"]          
+    },
+    "bonus": {
+      "type": "object",
+      "properties": {
+        "skipped": {
+          "type": "integer"
+        },
+        "completed": {
+          "type": "object"
+        }
+      },
+      "required": ["skipped", "completed"]            
+    }
+  },
+  "required": ["easy", "medium", "hard", "bonus"],
+  "additionalProperties": false  
+}
